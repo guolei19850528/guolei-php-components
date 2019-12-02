@@ -1,5 +1,5 @@
 {
-    "name": "guolei/guolei-php-component-common",
+    "name": "guolei/guolei-php-components",
     "authors": [
         {
             "name": "guolei",
@@ -7,7 +7,9 @@
         }
     ],
     "require": {
-        "ramsey/uuid": "^3.0@dev"
+        "ramsey/uuid": "^3.0@dev",
+        "predis/predis": "^2.0@dev",
+        "doctrine/dbal": "^3.0@dev"
     },
     "minimum-stability": "dev",
     "autoload": {
