@@ -5,7 +5,7 @@
  * @phone 15210720528
  */
 
-namespace Guolei\Php\Components\Common;
+namespace Guolei\Php\Components;
 
 
 /**
@@ -13,7 +13,7 @@ namespace Guolei\Php\Components\Common;
  * curl operation class
  * use curl
  * @see https://www.php.net/manual/zh/book.curl.php
- * @package Guolei\Php\Components\Common
+ * @package Guolei\Php\Components
  */
 class CurlClient
 {

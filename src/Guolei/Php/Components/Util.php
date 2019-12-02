@@ -4,13 +4,13 @@
  * @email 174000902@qq.com
  * @phone 15210720528
  */
-namespace Guolei\Php\Components\Common;
+namespace Guolei\Php\Components;
 
 use Ramsey\Uuid\Uuid;
 
 /**
  * Class Util
- * @package Guolei\Php\Components\Common
+ * @package Guolei\Php\Components
  */
 class Util
 {
