@@ -5,7 +5,7 @@
  * @phone 15210720528
  */
 
-namespace Guolei\Php\Component\Common;
+namespace Guolei\Php\Components\Common;
 
 
 /**

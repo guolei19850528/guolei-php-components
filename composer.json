@@ -12,7 +12,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Guolei\\Php\\Component\\Common\\": "src/Guolei/Php/Component/Common"
+            "Guolei\\Php\\Components\\": "src/Guolei/Php/Components"
         }
     },
     "repositories": {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Guolei\Php\Component\Common;
+namespace Guolei\Php\Components\Common;
 
 
 class DbFactory

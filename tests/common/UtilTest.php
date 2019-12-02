@@ -1,7 +1,7 @@
 <?php
 
 use \PHPUnit\Framework\TestCase;
-use \Guolei\Php\Component\Common\Util;
+use \Guolei\Php\Components\Common\Util;
 
 class UtilTest extends TestCase
 {

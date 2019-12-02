@@ -1,7 +1,7 @@
 <?php
 
 use \PHPUnit\Framework\TestCase;
-use \Guolei\Php\Component\Common\CurlClient;
+use \Guolei\Php\Components\Common\CurlClient;
 
 class CurlClientTest extends TestCase
 {
