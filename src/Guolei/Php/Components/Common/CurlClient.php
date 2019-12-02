@@ -13,7 +13,7 @@ namespace Guolei\Php\Components\Common;
  * curl operation class
  * use curl
  * @see https://www.php.net/manual/zh/book.curl.php
- * @package Guolei\Php\Component\Common
+ * @package Guolei\Php\Components\Common
  */
 class CurlClient
 {
