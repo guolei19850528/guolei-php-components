@@ -3,7 +3,7 @@
 use \PHPUnit\Framework\TestCase;
 use \Guolei\Php\Component\Common\Util;
 
-class UtilTest extends TestCase
+class CommonTest extends TestCase
 {
     public function testMethods()
     {
