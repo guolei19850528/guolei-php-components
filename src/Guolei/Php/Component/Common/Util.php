@@ -1,9 +1,17 @@
 <?php
-
+/**
+ * @author guolei
+ * @email 174000902@qq.com
+ * @phone 15210720528
+ */
 namespace Guolei\Php\Component\Common;
 
 use Ramsey\Uuid\Uuid;
 
+/**
+ * Class Util
+ * @package Guolei\Php\Component\Common
+ */
 class Util
 {
     /**
