@@ -1,0 +1,27 @@
+{
+    "name": "guolei/guolei-php-component-common",
+    "authors": [
+        {
+            "name": "guolei",
+            "email": "174000902@qq.com"
+        }
+    ],
+    "require": {
+        "ramsey/uuid": "^3.0@dev"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Guolei\\Php\\Component\\Common\\": "src/Guolei/Php/Component/Common"
+        }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0@dev"
+    }
+}
