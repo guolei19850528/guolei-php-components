@@ -7,6 +7,8 @@ class DbTest extends TestCase
     public function testMethods(){
         $this->assertTrue(true);
 
+
+
         return true;
     }
 }
