@@ -4,6 +4,7 @@
  * @email 174000902@qq.com
  * @phone 15210720528
  */
+
 namespace Guolei\Php\Components;
 
 use Ramsey\Uuid\Uuid;
@@ -14,6 +15,18 @@ use Ramsey\Uuid\Uuid;
  */
 class Util
 {
+    const REG_MOBILE = "/^(((13[0-9]{1})|(14[0-9]{1})|(16[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/";
+
+    const REG_EMAIL = "/^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/";
+
+    const REG_ANDROID_BROWSER = "/(Android)\s+([\d.]+)/";
+
+    const REG_IPHONE_BROWSER = "/(iPhone\sOS)\s([\d_]+)/";
+
+    const REG_IPAD_BROWSER = "/(iPad).*OS\s([\d_]+)/";
+
+    const REG_WECHAT_BROWSER = "/MicroMessenger/i";
+
     /**
      * timestamp type today zero hour
      */
