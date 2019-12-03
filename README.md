@@ -13,8 +13,8 @@ common DbFactory class
 use \Guolei\Php\Components\DbFactory;
 // dbal mysql
 $config = [
-    "dbname" => "",
-    "user" => "",
+    "dbname" => "dbname",
+    "user" => "user",
     "password" => "password",
     "host" => "host",
     "driver" => "pdo_mysql",
@@ -25,8 +25,8 @@ $conn=$dbFactory->getDBALConnection($config);
 // predis redis
 $config = [
     "scheme" => "tcp",
-    "host" => "121.42.166.250",
-    "password" =>"abcd@123",
+    "host" => "host",
+    "password" =>"password",
     "timeout" =>50,
     "port" => 6379,
 ];
