@@ -7,9 +7,9 @@
         }
     ],
     "require": {
-        "ramsey/uuid": "^3.0@dev",
-        "predis/predis": "^2.0@dev",
-        "doctrine/dbal": "^3.0@dev"
+        "ramsey/uuid": "^3.9.1",
+        "predis/predis": "^1.1.1",
+        "doctrine/dbal": "^2.10.0"
     },
     "minimum-stability": "dev",
     "autoload": {
