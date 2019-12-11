@@ -8,14 +8,14 @@ class UtilTest extends TestCase
     public function testMethods()
     {
         $this->assertIsBool(true);
-//        $uuid = Util::getUuidStr(1);
-//        print_r(sprintf("uuid1 is %s \n", $uuid));
-//        $uuid = Util::getUuidStr(3);
-//        print_r(sprintf("uuid3 is %s \n", $uuid));
-//        $uuid = Util::getUuidStr(4);
-//        print_r(sprintf("uuid4 is %s \n", $uuid));
-//        $uuid = Util::getUuidStr(5);
-//        print_r(sprintf("uuid5 is %s \n", $uuid));
+        $uuid = Util::getUuidStr(1);
+        print_r(sprintf("uuid1 is %s \n", $uuid));
+        $uuid = Util::getUuidStr(3);
+        print_r(sprintf("uuid3 is %s \n", $uuid));
+        $uuid = Util::getUuidStr(4);
+        print_r(sprintf("uuid4 is %s \n", $uuid));
+        $uuid = Util::getUuidStr(5);
+        print_r(sprintf("uuid5 is %s \n", $uuid));
 //
 //        $randomStr = Util::getRandomStr(32);
 //        print_r(sprintf("random str is %s \n", $randomStr));
