@@ -1,5 +1,5 @@
 <?php
-
+include_once "../vendor/autoload.php";
 use \PHPUnit\Framework\TestCase;
 use Guolei\Php\Components\Wechat;
 class WechatTest extends \PHPUnit\Framework\TestCase
@@ -11,7 +11,7 @@ class WechatTest extends \PHPUnit\Framework\TestCase
         $wechat=new Wechat($appId,$appSecret);
         $accessToken=$wechat->getAccessToken();
         $jsApiTicket=$wechat->getJsApiTicket($accessToken);
-//        print_r($wechat->getSignatures($jsApiTicket));
+        print_r($wechat->getSignatures($jsApiTicket));
         return true;
     }
 }

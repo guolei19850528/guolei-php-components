@@ -1,5 +1,5 @@
 <?php
-
+include_once "../vendor/autoload.php";
 use \PHPUnit\Framework\TestCase;
 use \Guolei\Php\Components\Util;
 
