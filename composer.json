@@ -24,6 +24,6 @@
         "doctrine/dbal": "^2.10@dev"
     },
     "require-dev": {
-        "phpunit/phpunit": "9.0.x-dev"
+        "phpunit/phpunit": "^9.0.x-dev"
     }
 }
