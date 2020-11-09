@@ -9,6 +9,8 @@ namespace Guolei\Php\Components;
 
 use Guolei\Php\Components\CurlClient;
 use Guolei\Php\Components\Util;
+use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
 
 /**
  * Class Wechat
@@ -77,21 +79,20 @@ class Wechat
         if (!is_string($this->getAppSecret()) || strlen($this->getAppSecret()) <= 0) {
             throw new \InvalidArgumentException(sprintf("appSecret %s must string and not empty"), $this->getAppSecret());
         }
-        $requestUrl = sprintf("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=%s&secret=%s", $this->getAppId(), $this->getAppSecret());
-        $curlClient = new CurlClient();
-        $curlClient->init($requestUrl);
-        $curlClient->setOpt(CURLOPT_POST, 1);
-        $curlClient->setOpt(CURLOPT_SSL_VERIFYPEER, 0);
-        $curlClient->setOpt(CURLOPT_SSL_VERIFYHOST, 0);
-        $curlClient->setOpt(CURLOPT_ENCODING, 'gzip,deflate');// 解释gzip内容
-        $curlClient->setOpt(CURLOPT_RETURNTRANSFER, 1);
-        $curlClient->setOpt(CURLOPT_CONNECTTIMEOUT, 30);
-        $curlClient->setOpt(CURLOPT_TIMEOUT, 30);
-        $response = $curlClient->exec();
-        if (is_array($response) && count($response) && isset($response["info"]) && $response["info"]["http_code"] == 200) {
-            $content = isset($response["content"]) ? json_decode($response["content"], true) : [];
-            $accessToken = isset($content["access_token"]) ? strval($content["access_token"]) : "";
-            return $accessToken;
+        $client=new Client(["base_uri"=>"https://api.weixin.qq.com/cgi-bin/token","timeout"=>30]);
+        $response=$client->request("GET","",[
+            RequestOptions::QUERY=>[
+                "grant_type"=>"client_credential",
+                "appid"=>$this->appId,
+                "secret"=>$this->appSecret
+            ]
+        ]);
+        if($response->getStatusCode()==200){
+            $content=json_decode($response->getBody()->getContents(),true);
+            if (is_array($content) && count($content)) {
+                $accessToken = isset($content["access_token"]) ? strval($content["access_token"]) : "";
+                return $accessToken;
+            }
         }
         return "";
     }
@@ -107,21 +108,19 @@ class Wechat
         if (!is_string($accessToken) || strlen($accessToken) <= 0) {
             throw new \InvalidArgumentException(sprintf("accessToken %s must string and not empty"), $this->getAppId());
         }
-        $requestUrl = sprintf("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=%s&type=jsapi", $accessToken);
-        $curlClient = new CurlClient();
-        $curlClient->init($requestUrl);
-        $curlClient->setOpt(CURLOPT_POST, 1);
-        $curlClient->setOpt(CURLOPT_SSL_VERIFYPEER, 0);
-        $curlClient->setOpt(CURLOPT_SSL_VERIFYHOST, 0);
-        $curlClient->setOpt(CURLOPT_ENCODING, 'gzip,deflate');// 解释gzip内容
-        $curlClient->setOpt(CURLOPT_RETURNTRANSFER, 1);
-        $curlClient->setOpt(CURLOPT_CONNECTTIMEOUT, 30);
-        $curlClient->setOpt(CURLOPT_TIMEOUT, 30);
-        $response = $curlClient->exec();
-        if (is_array($response) && count($response) && isset($response["info"]) && $response["info"]["http_code"] == 200) {
-            $content = isset($response["content"]) ? json_decode($response["content"], true) : [];
-            $jsApiTicket = isset($content["ticket"]) ? strval($content["ticket"]) : "";
-            return $jsApiTicket;
+        $client=new Client(["base_uri"=>"https://api.weixin.qq.com/cgi-bin/ticket/getticket","timeout"=>30]);
+        $response=$client->request("POST","",[
+            RequestOptions::FORM_PARAMS=>[
+                "access_token"=>$accessToken,
+                "type"=>"jsapi",
+            ]
+        ]);
+        if($response->getStatusCode()==200){
+            $content=json_decode($response->getBody()->getContents(),true);
+            if (is_array($content) && count($content)) {
+                $jsApiTicket = isset($content["ticket"]) ? strval($content["ticket"]) : "";
+                return $jsApiTicket;
+            }
         }
         return "";
     }
@@ -184,21 +183,23 @@ class Wechat
         if (!is_string($code) || strlen($code) <= 0) {
             throw new \InvalidArgumentException(sprintf("code %s must string and not empty"), $this->getAppId());
         }
-        $requestUrl = sprintf("https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code", $this->getAppId(), $this->getAppSecret(), $code);
-        $curlClient = new CurlClient();
-        $curlClient->init($requestUrl);
-        $curlClient->setOpt(CURLOPT_POST, 1);
-        $curlClient->setOpt(CURLOPT_SSL_VERIFYPEER, 0);
-        $curlClient->setOpt(CURLOPT_SSL_VERIFYHOST, 0);
-        $curlClient->setOpt(CURLOPT_ENCODING, 'gzip,deflate');// 解释gzip内容
-        $curlClient->setOpt(CURLOPT_RETURNTRANSFER, 1);
-        $curlClient->setOpt(CURLOPT_CONNECTTIMEOUT, 30);
-        $curlClient->setOpt(CURLOPT_TIMEOUT, 30);
-        $response = $curlClient->exec();
-        if (is_array($response) && count($response) && isset($response["info"]) && $response["info"]["http_code"] == 200) {
-            $content = isset($response["content"]) ? json_decode($response["content"], true) : [];
-            $openId = isset($content["openid"]) ? strval($content["openid"]) : "";
-            return $openId;
+
+        $client=new Client(["base_uri"=>"https://api.weixin.qq.com/sns/oauth2/access_token","timeout"=>30]);
+        $response=$client->request("POST","",[
+            RequestOptions::FORM_PARAMS=>[
+                "grant_type"=>"authorization_code",
+                "appid"=>$this->appId,
+                "secret"=>$this->appSecret,
+                "code"=>$code
+            ]
+        ]);
+        if($response->getStatusCode()==200){
+            $content=json_decode($response->getBody()->getContents(),true);
+            if (is_array($content) && count($content)) {
+                $content = isset($response["content"]) ? json_decode($response["content"], true) : [];
+                $openId = isset($content["openid"]) ? strval($content["openid"]) : "";
+                return $openId;
+            }
         }
         return "";
     }
