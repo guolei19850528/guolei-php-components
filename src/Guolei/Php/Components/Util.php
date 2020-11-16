@@ -300,7 +300,7 @@ class Util
     public static function xmlToArray($xml = null)
     {
         if (!is_string($xml) || strlen($xml) <= 0) {
-            throw new GuoleiPhpUtilException(sprintf("xml %s must string and not empty", $xml));
+            throw new \InvalidArgumentException(sprintf("xml %s must string and not empty", $xml));
         }
         libxml_disable_entity_loader(true);
         return json_decode(json_encode(simplexml_load_string($xml, "SimpleXMLElement", LIBXML_NOCDATA)), true);
