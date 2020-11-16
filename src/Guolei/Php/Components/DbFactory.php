@@ -13,7 +13,7 @@ class DbFactory
      * @return \Doctrine\DBAL\Connection
      * @throws \Doctrine\DBAL\DBALException
      */
-    public function getDBALConnection($parameters = [])
+    public function getDbalConnection($parameters = [])
     {
         /**
          * @see https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#configuration
